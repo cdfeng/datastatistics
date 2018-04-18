@@ -25,29 +25,5 @@
 	   WHERE `id` = #{id}
     </select>
 
-    <insert id="insert" parameterType="cn.scu.iot.datastatistics.entity.User" >
-       INSERT INTO
-       		`user`
-       		(`name`,`age`)
-       	VALUES
-       		(#{name}, #{age})
-    </insert>
-
-    <update id="update" parameterType="cn.scu.iot.datastatistics.entity.User" >
-       UPDATE
-       		`user`
-       SET
-       	<if test="name != null">`name` = #{nage},</if>
-       	<if test="age != null">`age` = #{age},</if>
-       WHERE
-       		`id` = #{id}
-    </update>
-
-    <delete id="delete" parameterType="java.lang.Integer" >
-       DELETE FROM
-       		 `user`
-       WHERE
-       		 `id` =#{id}
-    </delete>
 
 </mapper>
