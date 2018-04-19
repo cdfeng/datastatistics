@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.scu.iot.datastatistics.mapper.StatisticsEntityMapper" >
+    <resultMap id="StatisticsEntity" type="cn.scu.iot.datastatistics.entity.StatisticsEntity">
+        <id column="count" property="count" jdbcType="INTEGER"/>
+        <id column="year" property="year" jdbcType="INTEGER"/>
+        <id column="month" property="month" jdbcType="INTEGER"/>
+        <id column="day" property="day" jdbcType="INTEGER"/>
+        <!--<result column="user_sex" property="userSex" javaType="com.neo.enums.UserSexEnum"/>-->
+    </resultMap>
+
+    <select id="getStatisticsByYear" resultMap="StatisticsEntity" >
+       SELECT
+       year(FROM_UNIXTIME(`r_time`)) as `year`,count(1) as `count`
+	   FROM `user_basic_info`
+	   GROUP BY year(FROM_UNIXTIME(`r_time`))
+	  ORDER BY FROM_UNIXTIME(`r_time`)
+    </select>
+
+    <select id="getStatisticsByMonth" resultMap="StatisticsEntity" >
+      SELECT
+      year(FROM_UNIXTIME(`r_time`)) as `year`,month(FROM_UNIXTIME(`r_time`)) as `month`,count(1) as `count`
+	  FROM `user_basic_info`
+	  GROUP BY month(FROM_UNIXTIME(`r_time`))
+	  ORDER BY FROM_UNIXTIME(`r_time`)
+    </select>
+
+    <select id="getStatisticsByDay" resultMap="StatisticsEntity" >
+      SELECT
+      year(FROM_UNIXTIME(`r_time`)) as `year`,month(FROM_UNIXTIME(`r_time`)) as `month`,day(FROM_UNIXTIME(`r_time`)) as `day`,count(1) as `count`
+	  FROM `user_basic_info`
+	  GROUP BY day(FROM_UNIXTIME(`r_time`))
+	  ORDER BY FROM_UNIXTIME(`r_time`)
+    </select>
+
+</mapper>

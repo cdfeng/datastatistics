@@ -8,7 +8,7 @@
         <result column="passwd" property="passwd" jdbcType="VARCHAR"/>
         <result column="unionid" property="unionId" jdbcType="VARCHAR"/>
         <result column="third_id" property="thirdId" jdbcType="VARCHAR"/>
-        <result column="user_type" property="userType" typeHandler="cn.scu.iot.datastatistics.utils.UserTypeHandler"/>
+        <result column="user_type" property="userType" typeHandler="UserTypeHandler"/>
         <result column="deposit" property="deposit" jdbcType="DOUBLE"/>
         <result column="max_apply_devs" property="maxApplyDevs" jdbcType="BIGINT"/>
         <result column="data_max_num_per_dev" property="dataMaxNumPerDev" jdbcType="BIGINT"/>
@@ -33,7 +33,7 @@
         `uid`,`name`, `nickname`, `passwd`, `unionid`, `third_id`, `user_type`,
         `deposit`,`max_apply_devs`,`data_max_num_per_dev`,`text_max_devs`,`have_max_devs`,`his_data_max_num_per_dev`,
         `api_max_num`,`img_url`,`state`,`phone`,`company`,`r_time`,
-        `third_platform_id`,`alert_type`,`is_alert`,`type`,`info`
+        `third_platform_id`,`alert_type`,`is_alert`,`type`,`info`,`last_update_time`,`create_time`
     </sql>
 
     <select id="getAll" resultMap="UserBasicInfoMap"  >
